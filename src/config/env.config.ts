@@ -6,15 +6,9 @@ config();
 const PORT = env.get('PORT').asInt();
 const NODE_ENV = env.get('NODE_ENV').asString();
 
-const CRYPTO_KEY = env.get('CRYPTO_KEY').asString();
-const CRYPTO_IV = env.get('CRYPTO_IV').asString();
 const serverConfig = {
   NODE_ENV,
   PORT,
-
-  CRYPTO_KEY,
-  CRYPTO_IV,
-
   redis: {
     ttl: env.get('REDIS_TTL').asInt(),
     username: env.get('REDIS_USERNAME').asString(),
