@@ -12,10 +12,10 @@ import serverConfig from './config/env.config';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors({
-    origin: '*', // Allow all origins
+    origin: '*',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     allowedHeaders: 'Content-Type, Accept, Authorization',
-    credentials: true, // Set to true if you need to include cookies or authentication
+    credentials: true,
     preflightContinue: false,
     optionsSuccessStatus: 204,
   });
