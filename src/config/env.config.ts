@@ -9,6 +9,7 @@ const NODE_ENV = env.get('NODE_ENV').asString();
 const serverConfig = {
   NODE_ENV,
   PORT,
+  domain: env.get('DOMAIN').asString(),
   redis: {
     ttl: env.get('REDIS_TTL').asInt(),
     username: env.get('REDIS_USERNAME').asString(),

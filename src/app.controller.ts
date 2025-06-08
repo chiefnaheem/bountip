@@ -13,6 +13,7 @@ import { AppService } from './app.service';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { ShortenUrlDto } from './index.dto';
 import { ClickInfo } from './app.interface';
+import serverConfig from './config/env.config';
 
 @ApiTags('URL Shortener')
 @Controller('url')
@@ -35,9 +36,12 @@ export class AppController {
       example: { shortCode: 'A1B2C3D' },
     },
   })
-  async shorten(@Body() body: ShortenUrlDto): Promise<{ shortCode: string }> {
+  async shorten(
+    @Body() body: ShortenUrlDto,
+  ): Promise<{ shortCode: string; shortUrl: string }> {
     const shortCode = await this.appService.shorten(body.originalUrl);
-    return { shortCode };
+    const shortUrl = `${serverConfig.domain}/${shortCode}`;
+    return { shortCode, shortUrl };
   }
 
   @Get(':shortCode')
